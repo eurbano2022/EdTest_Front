@@ -1,0 +1,30 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 72px;
+    background-color: #0B0D17;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+  .left-section {
+    font-size: 14px;
+    color: #D9DBE1;
+    padding-left: 165px;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .right-section {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 165px;
+  }
+  
+  .right-section a {
+    color: white;
+    margin-left: 10px;
+    margin-right: 16px; /* Agrega la separación entre iconos */
+  }
