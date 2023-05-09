@@ -1,85 +1,128 @@
-import { useState } from 'react';
-import React from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
-import '../../styles/FinishModal.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from 'react'
+import ReactModal from 'react-modal'
+import { Button, Form } from 'react-bootstrap'
+import '../../styles/FinishModal.css'
 
 function FinishModal(props) {
-  const [name, setName] = useState('');
-  const [size, setSize] = useState('');
-  const [industry, setIndustry] = useState('');
-  const [email, setEmail] = useState('');
+    const [name, setName] = useState('')
+    const [size, setSize] = useState('')
+    const [industry, setIndustry] = useState('')
+    const [email, setEmail] = useState('')
 
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
+    const handleNameChange = (event) => {
+        setName(event.target.value)
+    }
 
-  const handleSizeChange = (event) => {
-    setSize(event.target.value);
-  };
+    const handleSizeChange = (event) => {
+        setSize(event.target.value)
+    }
 
-  const handleIndustryChange = (event) => {
-    setIndustry(event.target.value);
-  };
+    const handleIndustryChange = (event) => {
+        setIndustry(event.target.value)
+    }
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value)
+    }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Do something with the form data
-    props.onClose();
-  };
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        // Do something with the form data
+        props.onClose()
+    }
 
-  return (
-    <Modal show={props.show} onHide={props.onClose}>
-      <Modal.Header closeButton>
-      </Modal.Header>
-      <Modal.Body>
-        <p>Registra los siguientes datos para enviar tus resultados y 
-        una guía basada en buenas prácticas de industria que podrán 
-        ayudar a mejorar el proceso de pruebas en tu organización.</p>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="name">
-            <Form.Label>Nombre de la empresa</Form.Label>
-            <Form.Control type="text" placeholder="Ingrese el nombre de la empresa" value={name} onChange={handleNameChange} />
-          </Form.Group>
+    return (
+        <ReactModal
+            isOpen={props.show}
+            onRequestClose={props.onClose}
+            contentLabel="Finish Modal"
+            className="modal-content"
+            overlayClassName="modal-overlay"
+            style={{ zIndex: 100 }}
+        >
+            <div className="modal-header">
+                <button className="modal-close-button" onClick={props.onClose}>
+                    X
+                </button>
+            </div>
+            <div className="modal-body">
+                <p>
+                    Registra los siguientes datos para enviar tus resultados y
+                    una guía basada en buenas prácticas de industria que podrán
+                    ayudar a mejorar el proceso de pruebas en tu organización.
+                </p>
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group controlId="name">
+                        <Form.Control
+                            type="text"
+                            placeholder="Empresa"
+                            value={name}
+                            onChange={handleNameChange}
+                            required
+                        />
+                        <Form.Text muted>Campo requerido</Form.Text>
+                    </Form.Group>
 
-          <Form.Group controlId="size">
-            <Form.Label>Tamaño de la empresa</Form.Label>
-            <Form.Control as="select" value={size} onChange={handleSizeChange}>
-              <option>Seleccionar...</option>
-              <option>1 - 50</option>
-              <option>51 - 200</option>
-              <option>201 - 500</option>
-              <option>+500</option>
-            </Form.Control>
-          </Form.Group>
+                    <Form.Group controlId="size">
+                        <Form.Control
+                            as="select"
+                            value={size}
+                            onChange={handleSizeChange}
+                            required
+                        >
+                            <option value="">Tamaño de la empresa</option>
+                            <option value="1-50">1 - 50</option>
+                            <option value="51-200">51 - 200</option>
+                            <option value="201-500">201 - 500</option>
+                            <option value="501+">+500</option>
+                        </Form.Control>
+                        <Form.Text muted>Campo requerido</Form.Text>
+                    </Form.Group>
 
-          <Form.Group controlId="industry">
-            <Form.Label>Industria</Form.Label>
-            <Form.Control as="select" value={industry} onChange={handleIndustryChange}>
-              <option>Seleccionar...</option>
-              <option>Informática y tecnología</option>
-              <option>Salud</option>
-              <option>Alimentos y bebidas</option>
-              <option>Finanzas y economía</option>
-            </Form.Control>
-          </Form.Group>
+                    <Form.Group controlId="industry">
+                        <Form.Control
+                            as="select"
+                            value={industry}
+                            onChange={handleIndustryChange}
+                            required
+                        >
+                            <option value="">Industria</option>
+                            <option value="informatica-y-tecnologia">
+                                Informática y tecnología
+                            </option>
+                            <option value="salud">Salud</option>
+                            <option value="alimentos-y-bebidas">
+                                Alimentos y bebidas
+                            </option>
+                            <option value="finanzas-y-economia">
+                                Finanzas y economía
+                            </option>
+                        </Form.Control>
+                        <Form.Text muted>Campo requerido</Form.Text>
+                    </Form.Group>
 
-          <Form.Group controlId="email">
-            <Form.Label>Email corporativo</Form.Label>
-            <Form.Control type="email" placeholder="Ingrese el email corporativo" value={email} onChange={handleEmailChange} />
-          </Form.Group>
+                    <Form.Group controlId="email">
+                        <Form.Control
+                            type="email"
+                            placeholder="E-mail corporativo"
+                            value={email}
+                            onChange={handleEmailChange}
+                            required
+                        />
+                        <Form.Text muted>Campo requerido</Form.Text>
+                    </Form.Group>
 
-          <Button variant="primary" type="submit">
-            Ver Resultados
-          </Button>
-        </Form>
-      </Modal.Body>
-    </Modal>
-  );
+                    <Button
+                        variant="primary"
+                        type="submit"
+                        className="btn-custom"
+                    >
+                        Ver Resultados
+                    </Button>
+                </Form>
+            </div>
+        </ReactModal>
+    )
 }
 
 export default FinishModal

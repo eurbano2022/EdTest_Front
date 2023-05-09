@@ -17,6 +17,8 @@ border-radius: 6px;
 box-shadow: none;
 border-width: 0px;
 cursor: pointer;
+font-family: 'Inter', sans-serif;
+font-size: 20px;
 }
   .presentation-container {
     display: flex;
