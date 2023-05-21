@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/static/media/Inter-Medium.43188230.ttf"
   },
   {
-    "revision": "edbd837c535244f5e30f8c1bcf18a209",
+    "revision": "d032422d171d316f74e1287193370918",
     "url": "/index.html"
   }
 ];
