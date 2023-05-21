@@ -20,12 +20,12 @@ self.__precacheManifest = [
     "url": "/static/media/Inter-Regular.52355593.ttf"
   },
   {
-    "revision": "431882308d0910d292648753b2b2880b",
-    "url": "/static/media/Inter-Medium.43188230.ttf"
-  },
-  {
     "revision": "67b2d54ebf6d61853f2bc5c201e81a45",
     "url": "/static/media/Inter-SemiBold.67b2d54e.ttf"
+  },
+  {
+    "revision": "431882308d0910d292648753b2b2880b",
+    "url": "/static/media/Inter-Medium.43188230.ttf"
   },
   {
     "revision": "edbd837c535244f5e30f8c1bcf18a209",
