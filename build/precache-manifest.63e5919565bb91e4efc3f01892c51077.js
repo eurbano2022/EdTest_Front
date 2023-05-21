@@ -16,16 +16,16 @@ self.__precacheManifest = [
     "url": "/static/js/runtime~main.229c360f.js"
   },
   {
+    "revision": "431882308d0910d292648753b2b2880b",
+    "url": "/static/media/Inter-Medium.43188230.ttf"
+  },
+  {
     "revision": "52355593e805f6c172bfdc156a39a031",
     "url": "/static/media/Inter-Regular.52355593.ttf"
   },
   {
     "revision": "67b2d54ebf6d61853f2bc5c201e81a45",
     "url": "/static/media/Inter-SemiBold.67b2d54e.ttf"
-  },
-  {
-    "revision": "431882308d0910d292648753b2b2880b",
-    "url": "/static/media/Inter-Medium.43188230.ttf"
   },
   {
     "revision": "77ff747b88cd2f20e588d071621a3ba7",
