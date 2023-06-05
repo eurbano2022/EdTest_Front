@@ -1,43 +1,91 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import '../../styles/Questions.css'
 import FinishModal from './FinishModal'
+import { URL_BACKEND } from '../../commons/constants'
 
 const Questions = () => {
     const [showFinishModal, setShowFinishModal] = useState(false)
-    const [currentStep, setCurrentStep] = useState(1)
+    const [currentLevel, setcurrentLevel] = useState(1)
+    const [currentProcessArea, setcurrentProcessArea] = useState(1)
+    
+    const [levels, setLevels] = useState({})
     const [answers, setAnswers] = useState({})
-    const [questions, setQuestions] = useState([
-        [
-            { id: '1', pregunta: 'Pregunta 1', url: '', padre: null },
-            { id: '2', pregunta: 'Pregunta 1.1', url: '', padre: '1' },
-            { id: '3', pregunta: 'Pregunta 1.2', url: '', padre: '1' },
-            { id: '4', pregunta: 'Pregunta 2', url: '', padre: null },
-        ],
-        [
-            { id: '5', pregunta: 'Pregunta 3', url: '', padre: null },
-            { id: '6', pregunta: 'Pregunta 4', url: '', padre: null },
-        ],
-        [
-            { id: '7', pregunta: 'Pregunta 5', url: '', padre: null },
-            { id: '8', pregunta: 'Pregunta 6', url: '', padre: null },
-        ],
-        [
-            { id: '9', pregunta: 'Pregunta 7', url: '', padre: null },
-            { id: '10', pregunta: 'Pregunta 8', url: '', padre: null },
-        ],
-        [
-            { id: '11', pregunta: 'Pregunta 9', url: '', padre: '' },
-            { id: '12', pregunta: 'Pregunta 10', url: '', padre: '' },
-        ],
-    ])
+    const [processAreas, setProcessAreas] = useState([])
+    const [questions, setQuestions] = useState([])
+
+    useEffect(() => {
+        fetchProcessAreas()
+        fetchCriteria()
+        fetchLevels()
+    }, [])
+    const fetchLevels = async () => {
+        try {
+            const response = await fetch(`${URL_BACKEND}/levels`)
+            const jsonData = await response.json()
+            setLevels(jsonData)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const fetchProcessAreas = async () => {
+        try {
+            const response = await fetch(`${URL_BACKEND}/processAreas`)
+            console.log(response)
+            
+            const jsonData = await response.json()
+            console.log(jsonData)
+            const result = jsonData.reduce((resultArray, item) => {
+                const { level } = item
+
+                if (!resultArray[level.id]) {
+                    resultArray[level.id] = [] // Crea un nuevo subarreglo si no existe
+                }
+
+                resultArray[level.id].push(item) // Agrega el elemento al subarreglo correspondiente
+
+                return resultArray
+            }, [])
+            console.log(result)
+            console.log(result[currentLevel])
+            setProcessAreas(result)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const fetchCriteria = async () => {
+        try {
+            const response = await fetch(`${URL_BACKEND}/criteria`)
+            console.log(response)
+            
+            const jsonData = await response.json()
+            console.log(jsonData)
+            const result = jsonData.reduce((resultArray, item) => {
+                const { processArea } = item
+
+                if (!resultArray[processArea.id]) {
+                    resultArray[processArea.id] = [] // Crea un nuevo subarreglo si no existe
+                }
+
+                resultArray[processArea.id].push(item) // Agrega el elemento al subarreglo correspondiente
+
+                return resultArray
+            }, [])
+            console.log(result)
+            console.log(result[currentLevel])
+            setQuestions(result)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const handleRadioChange = (event, questionId) => {
         const answer = event.target.value === 'true'
         setAnswers((prevAnswers) => ({ ...prevAnswers, [questionId]: answer }))
 
         // Autocompletar respuestas de preguntas hijas si se seleccionó "No" en la pregunta padre
-        const parentId = questions[currentStep - 1].find(
+        const parentId = questions[currentProcessArea - 1].find(
             (question) => question.id === questionId
         ).padre
         const childrenIds = getChildrenIds(parentId)
@@ -53,13 +101,25 @@ const Questions = () => {
     }
 
     const handlePreviousStep = () => {
-        setCurrentStep(currentStep - 1)
+        if (currentProcessArea - (5*(currentLevel-1)) === 1) {
+            setcurrentProcessArea(5);
+            setcurrentLevel(currentLevel - 1)
+        }
+        setcurrentProcessArea(currentProcessArea - 1)
         console.log('answers:', answers)
+        console.log('currentLevel:', currentLevel)
+        console.log('currentProcessArea:', currentProcessArea)
     }
 
     const handleNextStep = () => {
-        setCurrentStep(currentStep + 1)
+        if (currentProcessArea - (5*(currentLevel-1)) === 5) {
+            setcurrentProcessArea(1);
+            setcurrentLevel(currentLevel + 1)
+        }
+        setcurrentProcessArea(currentProcessArea + 1)
         console.log('answers:', answers)
+        console.log('currentLevel:', currentLevel)
+        console.log('currentProcessArea:', currentProcessArea)
     }
 
     const handleFinishButtonClick = () => {
@@ -72,7 +132,7 @@ const Questions = () => {
     }
 
     const getChildrenIds = (parentId) => {
-        return questions[currentStep - 1]
+        return questions[currentProcessArea - 1]
             .filter((question) => question.padre === parentId)
             .map((question) => question.id)
     }
@@ -86,13 +146,6 @@ const Questions = () => {
             childrenIds.every((childId) => answers[childId] !== true)
         )
     }
-    const steps = [
-        'Politica Estrategica',
-        'Planeacion',
-        'Monitoreo y control',
-        'Diseño y ejecucion',
-        'Ambientes',
-    ]
 
     return (
         <div className="questions">
@@ -104,41 +157,51 @@ const Questions = () => {
             <div className="section1">
                 <div id="applicationStatus">
                     <ul className="applicationStatus">
-                        {steps.map((step, index) => (
-                            <li
-                                className={
-                                    (index === 0
-                                        ? 'step1'
-                                        : index === steps.length - 1
-                                        ? 'step3'
-                                        : 'step2') +
-                                    (index + 1 === currentStep ? 'active' : '')
-                                }
-                            >
-                                {step}
-                            </li>
-                        ))}
+                        {
+                            processAreas.length ? processAreas[currentLevel].map((processArea, index) => (
+                                <li
+                                    className={
+                                        (index === 0
+                                            ? 'step1'
+                                            : index === processAreas[currentLevel].length - 1
+                                                ? 'step3'
+                                                : 'step2') +
+                                        (index + 1 === (currentProcessArea - (5*(currentLevel-1))) ? 'active' : '')
+                                       
+                                    }
+                                >
+                                    {processArea.name}
+                                </li>
+                            ))
+                                :
+                                ''
+                        }
                     </ul>
                 </div>
             </div>
             <div className="section2-container">
                 <div className="section2-left">
                     <p>Criterio</p>
-                    {questions[currentStep - 1].map(
+                    {
+                        questions.length ? questions[currentProcessArea].map(
                         (question, index) =>
                             (answers[question.padre] === undefined ||
                                 answers[question.padre] === true) && (
                                 <div key={index}>
-                                    <span>{question['pregunta']}</span>
+                                    <span>{question.description}</span>
                                 </div>
                             )
-                    )}
+                        )
+                            :
+                            ''
+                }
                 </div>
                 <div className="section2-right">
                     <p>
                         Sí<span className="space"></span>No
                     </p>
-                    {questions[currentStep - 1].map(
+                    {
+                        questions.length ? questions[currentProcessArea].map(
                         (question, index) =>
                             (answers[question.padre] === undefined ||
                                 answers[question.padre] === true) && (
@@ -171,25 +234,28 @@ const Questions = () => {
                                     />
                                 </div>
                             )
-                    )}
+                        )
+                        :
+                        ''
+                }
                 </div>
             </div>
             <div className="section3">
                 <button
                     onClick={handlePreviousStep}
-                    disabled={currentStep === 1}
-                    className={currentStep === 1 ? 'disabled' : ''}
+                    disabled={currentProcessArea === 1 && currentLevel === 1}
+                    className={currentProcessArea === 1 && currentLevel === 1 ? 'disabled' : ''}
                 >
                     Anterior
                 </button>
                 <button
                     onClick={
-                        currentStep === 5
+                        (currentProcessArea - (5*(currentLevel-1))) === 5 && currentLevel === levels.length 
                             ? handleFinishButtonClick
                             : handleNextStep
                     }
                 >
-                    {currentStep === 5 ? 'Finalizar' : 'Siguiente'}
+                    {(currentProcessArea - (5*(currentLevel-1))) === 5 && currentLevel === levels.length  ? 'Finalizar' : 'Siguiente'}
                 </button>
             </div>
         </div>
