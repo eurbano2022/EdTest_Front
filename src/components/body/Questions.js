@@ -24,16 +24,19 @@ const Questions = () => {
     
     const getLevels = async () => {
         const data = await fetchLevels();
+        console.log('data: ', data);
         setLevels(data)
         
     }
     const getProcessAreas = async () => {
         const data = await fetchProcessAreas();
+        console.log('data: ', data);
         setProcessAreas( data)
     }
 
     const getCriteria = async () => {
         const data = await fetchCriteria();
+        console.log('data: ', data);
         setQuestions( data);
     }
 
