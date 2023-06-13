@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ReactModal from 'react-modal'
 import { Button, Form } from 'react-bootstrap'
 import '../../styles/FinishModal.css'
+import SpiderChart from 'react-spider-chart'
 
 function FinishModal(props) {
     const [name, setName] = useState('')
