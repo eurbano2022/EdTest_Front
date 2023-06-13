@@ -116,6 +116,7 @@ function FinishModal(props) {
                         variant="primary"
                         type="submit"
                         className="btn-custom"
+                        onClick={props.onClose}
                     >
                         Ver Resultados
                     </Button>

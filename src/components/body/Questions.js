@@ -4,8 +4,8 @@ import '../../styles/Questions.css'
 import FinishModal from './FinishModal'
 import { fetchCriteria, fetchLevels, fetchProcessAreas } from '../../commons/fetchData'
 
-const Questions = () => {
-    const [showFinishModal, setShowFinishModal] = useState(false)
+const Questions = (props) => {
+    const [showFinishModal, setShowFinishModal] = useState(true)
     const [currentLevel, setcurrentLevel] = useState(1)
     const [currentProcessArea, setcurrentProcessArea] = useState(1)
     const [currentCriteria, setcurrentCriteria] = useState(0)
@@ -79,7 +79,7 @@ const Questions = () => {
     }
 
     const handleFinishButtonClick = () => {
-        setShowFinishModal(true)
+        props.onClick()
     }
 
     const handleFinishModalClose = () => {
@@ -164,42 +164,42 @@ const Questions = () => {
                         const answer = answers[parentId];
                         if (answer === undefined || answer === true) {
                             return (
-                                      <div key={index}>
-                                          <input
-                                              type="radio"
-                                              id={`question${index}true`}
-                                              name={`question${question['id']}`}
-                                              value="true"
-                                              checked={
-                                                  answers[question.id] === true
-                                              }
-                                              onChange={(event) =>
-                                                  handleRadioChange(
-                                                      event,
-                                                      question.id
-                                                  )
-                                              }
-                                          />
-                                          <input
-                                              type="radio"
-                                              id={`question${index}false`}
-                                              name={`question${question['id']}`}
-                                              value="false"
-                                              checked={
-                                                  answers[question.id] === false
-                                              }
-                                              onChange={(event) =>
-                                                  handleRadioChange(
-                                                      event,
-                                                      question.id
-                                                  )
-                                              }
-                                          />
-                                      </div>
-                                  )
-                                }
-                                return null;
-                            })}
+                                    <div key={index}>
+                                        <input
+                                            type="radio"
+                                            id={`question${index}true`}
+                                            name={`question${question['id']}`}
+                                            value="true"
+                                            checked={
+                                                answers[question.id] === true
+                                            }
+                                            onChange={(event) =>
+                                                handleRadioChange(
+                                                    event,
+                                                    question.id
+                                                )
+                                            }
+                                        />
+                                        <input
+                                            type="radio"
+                                            id={`question${index}false`}
+                                            name={`question${question['id']}`}
+                                            value="false"
+                                            checked={
+                                                answers[question.id] === false
+                                            }
+                                            onChange={(event) =>
+                                                handleRadioChange(
+                                                    event,
+                                                    question.id
+                                                )
+                                            }
+                                        />
+                                    </div>
+                                )
+                            }
+                            return null;
+                        })}
                 </div>
             </div>
             <div className="section3">
@@ -217,13 +217,13 @@ const Questions = () => {
                 <button
                     onClick={
                         currentProcessArea - 5 * (currentLevel - 1) === 5 &&
-                        currentLevel === levels.length
+                        currentLevel === (levels.length - 1)
                             ? handleFinishButtonClick
                             : handleNextStep
                     }
                 >
                     {currentProcessArea - 5 * (currentLevel - 1) === 5 &&
-                    currentLevel === levels.length
+                    currentLevel === (levels.length - 1)
                         ? 'Finalizar'
                         : 'Siguiente'}
                 </button>

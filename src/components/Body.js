@@ -3,13 +3,7 @@ import '../styles/Body.css' // Importa el archivo CSS
 import Presentation from './body/Presentation'
 import Init from './body/Init'
 import Questions from './body/Questions'
-// import Step1 from './Step1';
-// import Step2 from './Step2';
-// import Step3 from './Step3';
-// import Step4 from './Step4';
-// import Step5 from './Step5';
-// import Finish from './Finish';
-// importa los demás componentes para cada estado
+import Finish from './body/Finish'
 
 class Body extends Component {
     constructor(props) {
@@ -25,12 +19,16 @@ class Body extends Component {
         this.setState({ currentContent: 'questions' })
     }
 
+    handleStartFinish = () => {
+        this.setState({ currentContent: 'finish' })
+    }
+
     render() {
         const states = {
             presentation: <Presentation onClick={this.handleViewEvaluation} />,
             init: <Init onClick={this.handleStartEvaluation} />,
-            questions: <Questions />,
-            // finish : <Finish />,
+            questions: <Questions  onClick={this.handleStartFinish} />,
+            finish : <Finish />,
         }
         const currentContent = states[this.state.currentContent]
 
