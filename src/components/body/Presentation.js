@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import '../../styles/Presentation.css'
+import React, { Component } from 'react';
+import '../../styles/Presentation.css';
 
 class Presentation extends Component {
     render() {
         return (
-            <div className="presentation-container">
-                <div className="presentation-left">
+            <div className='presentation-container'>
+                <div className='presentation-left'>
                     <p>
                         ¿Quieres saber cómo mejorar el <br />
                         proceso de <b>pruebas de software </b>
@@ -13,7 +13,7 @@ class Presentation extends Component {
                         en tu organización?
                     </p>
                 </div>
-                <div className="presentation-right">
+                <div className='presentation-right'>
                     <p>
                         Conoce el estado actual de tu proceso y descubre
                         <br />
@@ -22,14 +22,14 @@ class Presentation extends Component {
                     </p>
                     <button
                         onClick={this.props.onClick}
-                        className="presentation-button"
+                        className='presentation-button'
                     >
                         Iniciar Evaluación
                     </button>
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default Presentation
+export default Presentation;

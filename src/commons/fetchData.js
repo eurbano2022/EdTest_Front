@@ -1,4 +1,4 @@
-import { URL_BACKEND } from "./constants"
+import { URL_BACKEND } from './constants';
 
 export const fetchLevels = async () => {
     try {
@@ -6,37 +6,37 @@ export const fetchLevels = async () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-        })
-        const jsonData = await response.json()
-        return jsonData
+        });
+        const jsonData = await response.json();
+        return jsonData;
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-}
+};
 export const fetchProcessAreas = async () => {
     try {
         const response = await fetch(`${URL_BACKEND}/processAreas`, {
             headers: {
                 'Content-Type': 'application/json',
             },
-        })
-        const jsonData = await response.json()
+        });
+        const jsonData = await response.json();
         const result = jsonData.reduce((resultArray, item) => {
-            const { level } = item
+            const { level } = item;
 
             if (!resultArray[level.id]) {
-                resultArray[level.id] = [] // Crea un nuevo subarreglo si no existe
+                resultArray[level.id] = []; // Crea un nuevo subarreglo si no existe
             }
 
-            resultArray[level.id].push(item) // Agrega el elemento al subarreglo correspondiente
+            resultArray[level.id].push(item); // Agrega el elemento al subarreglo correspondiente
 
-            return resultArray
-        }, [])
+            return resultArray;
+        }, []);
         return result;
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-}
+};
 
 export const fetchCriteria = async () => {
     try {
@@ -44,22 +44,22 @@ export const fetchCriteria = async () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-        })
+        });
 
-        const jsonData = await response.json()
+        const jsonData = await response.json();
         const result = jsonData.reduce((resultArray, item) => {
-            const { processArea } = item
+            const { processArea } = item;
 
             if (!resultArray[processArea.id]) {
-                resultArray[processArea.id] = [] // Crea un nuevo subarreglo si no existe
+                resultArray[processArea.id] = []; // Crea un nuevo subarreglo si no existe
             }
 
-            resultArray[processArea.id].push(item) // Agrega el elemento al subarreglo correspondiente
+            resultArray[processArea.id].push(item); // Agrega el elemento al subarreglo correspondiente
 
-            return resultArray
-        }, [])
-        return result
+            return resultArray;
+        }, []);
+        return result;
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-}
+};

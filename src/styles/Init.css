@@ -5,9 +5,9 @@
     align-items: center;
     margin-top: 50px;
     font-family: in;
-  }
-  
-  .title {
+}
+
+.title {
     font-size: 48px;
     align-items: center;
     font-weight: 430;
@@ -16,24 +16,24 @@
     justify-content: center;
     text-align: center;
     line-height: 10px;
-  }
-  
-  .subtitle {
+}
+
+.subtitle {
     font-size: 18px;
     margin-bottom: 30px;
     font-weight: lighter;
     font-family: 'Inter', sans-serif;
-  }
-  
-  .steps {
+}
+
+.steps {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 30px;
     align-items: center;
-  }
-  
-  .step {
+}
+
+.step {
     padding: 16px 24px 16px 24px;
     display: flex;
     flex-direction: column;
@@ -41,9 +41,9 @@
     text-align: center;
     width: 255px;
     height: 234px;
-  }
-  
-  .step-number {
+}
+
+.step-number {
     margin-top: 0px;
     display: flex;
     align-items: center;
@@ -53,20 +53,20 @@
     font-size: 72px;
     font-weight: bold;
     line-height: 1; /* establece la altura de línea en 1, ajustándola automáticamente al tamaño del contenido */
-    color: #F4F5F7;
+    color: #f4f5f7;
     margin-bottom: 10px;
-  }
-  
-  .step-description {
+}
+
+.step-description {
     font-size: 16px;
-  }
-  
-  .button {
+}
+
+.button {
     padding: 10px 20px;
-    background-color: #8C30F5;
+    background-color: #8c30f5;
     color: #fff;
     border: none;
     border-radius: 6px;
     font-size: 20px;
     cursor: pointer;
-  }
+}

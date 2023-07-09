@@ -1,37 +1,37 @@
 .header {
     background-color: white;
-    border-bottom: 1px solid #E5E9F2;
+    border-bottom: 1px solid #e5e9f2;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 72px;
-  }
-  
-  .logo {
+}
+
+.logo {
     align-items: center;
     height: 72px;
     margin-right: 20px;
-  }
-  
-  .logo img {
+}
+
+.logo img {
     width: 188px;
     height: 72px;
     object-fit: contain;
     padding-left: 72px;
-  }
-  
-  .nav {
+}
+
+.nav {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     padding-right: 165px;
-  }
-  
-  .nav a {
+}
+
+.nav a {
     text-decoration: none;
     margin-left: 20px;
-    color: #18191F;
+    color: #18191f;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
-  }
+}

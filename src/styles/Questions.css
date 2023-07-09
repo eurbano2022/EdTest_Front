@@ -1,4 +1,4 @@
-input[type="radio"] {
+input[type='radio'] {
     margin-right: 79px;
     appearance: none;
     -webkit-appearance: none;
@@ -10,23 +10,22 @@ input[type="radio"] {
     outline: none;
     cursor: pointer;
     transition: background-color 0.2s, border-color 0.2s;
-  }
-  
-  input[type="radio"]:checked {
+}
+
+input[type='radio']:checked {
     border: 6px solid #ccc;
     background-color: #ffffff;
-    border-color: #5469D4;
-  }
+    border-color: #5469d4;
+}
 
 .questions {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    
-  }
- 
-  .section1 {
+}
+
+.section1 {
     margin-top: 85px;
     font-family: 'Inter', sans-serif;
     display: flex;
@@ -34,20 +33,22 @@ input[type="radio"] {
     width: 100%;
     padding: 0 50px;
     margin-bottom: 20px;
-    background-color: #F7FAFC;
+    background-color: #f7fafc;
     height: 163px;
     position: absolute;
     top: 0;
     /* z-index: 1; */
-  }
-  
-  #applicationStatus {
+}
+
+#applicationStatus {
     display: flex;
     justify-content: center;
-    width: auto;align-items: center;
-    left: 40px; }
+    width: auto;
+    align-items: center;
+    left: 40px;
+}
 
-  li {
+li {
     text-align: center;
     color: black;
     list-style: none;
@@ -62,60 +63,59 @@ input[type="radio"] {
     justify-content: center;
     align-items: center;
     text-align: center;
-  }
-  
-    ul.applicationStatus { /* this was irrelevant with the HTML you gave, but I added the class to the ul */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 10px;
-        width: 100%;
-        height: 100%;
-    }
-  
-  .step1active {
+}
+
+ul.applicationStatus {
+    /* this was irrelevant with the HTML you gave, but I added the class to the ul */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.step1active {
     background-image: url('/images/step1.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-  }
+}
 
-  .step2active {
+.step2active {
     background-image: url('/images/step2.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-  }
+}
 
-  .step3active {
+.step3active {
     background-image: url('/images/step3.png');
     background-size: 220px 68px;
-background-position: center;
-  }
+    background-position: center;
+}
 
-  .step1 {
+.step1 {
     background-image: url('/images/step1off.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-  }
+}
 
-  .step2 {
+.step2 {
     background-image: url('/images/step2off.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-  }
+}
 
-  .step3 {
+.step3 {
     background-image: url('/images/step3off.png');
     background-size: 220px 68px;
-background-position: center;
-  }
+    background-position: center;
+}
 
-  
-  
-  .section1 > div {
+.section1 > div {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -124,116 +124,115 @@ background-position: center;
     position: relative;
     display: inline-block;
     padding: 10px;
-  }
-  
-  .section1 > div:first-child::before {
+}
+
+.section1 > div:first-child::before {
     display: none;
-  }
-  
-  .section1 > div.active::before {
-    background-color: #8C30F5;
-  }
-  
-  .section1 > div > div {
+}
+
+.section1 > div.active::before {
+    background-color: #8c30f5;
+}
+
+.section1 > div > div {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background-color: #F7FAFC;
+    background-color: #f7fafc;
     border: 3px solid #ccc;
     margin-right: 10px;
     font-size: 16px;
     font-weight: bold;
-  }
-  
-  .section1 > div.active > div {
-    border-color: #8C30F5;
-    color: #8C30F5;
-  }
-  
-  .section2-container {
+}
+
+.section1 > div.active > div {
+    border-color: #8c30f5;
+    color: #8c30f5;
+}
+
+.section2-container {
     align-content: center;
     display: flex;
     justify-content: space-between;
     margin: 20px 0;
-  }
-  
-  .section2-left {
+}
+
+.section2-left {
     width: 50%;
     display: flex;
-  flex-direction: column;
-  align-items: center;
-  }
-  
-  .section2-left p {
+    flex-direction: column;
+    align-items: center;
+}
+
+.section2-left p {
     font-family: 'Inter', sans-serif;
     margin-bottom: 40px;
     margin-top: 100px;
     font-size: 24px;
-  }
-  
-  .section2-left span {
+}
+
+.section2-left span {
     display: block;
     margin-bottom: 10px;
     line-height: 24px;
     font-size: 16px;
     font-family: 'Inter', sans-serif;
     height: 48px;
-  }
-  .space {
+}
+.space {
     margin-right: 79px;
-  }
-  .section2-right {
+}
+.section2-right {
     width: 40%;
     border-radius: 50%;
     font-family: 'Inter', sans-serif;
     display: flex;
-  flex-direction: column;
-  align-items: center;
+    flex-direction: column;
+    align-items: center;
+}
 
-  }
-  
-  .section2-right p {
+.section2-right p {
     margin-bottom: 40px;
     margin-top: 100px;
     font-size: 24px;
-  }
-  
-  .section2-right button {
+}
+
+.section2-right button {
     margin-right: 79px;
-  }
-  
-  .section2-right div {
+}
+
+.section2-right div {
     margin-bottom: 10px;
     height: 48px;
     margin-left: 70px;
     display: flex;
-  }
-  
-  .section2-right label {
+}
+
+.section2-right label {
     display: inline-block;
     margin-right: 5px;
     width: 20px;
     height: 20px;
     border-radius: 50%;
     border: 1px solid #ccc;
-  }
-  
-  .section2-right input[type="checkbox"]:checked + label {
-    background-color: #2196F3;
-    border-color: #2196F3;
-  }
-  
-  .section3 {
+}
+
+.section2-right input[type='checkbox']:checked + label {
+    background-color: #2196f3;
+    border-color: #2196f3;
+}
+
+.section3 {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-  }
-  
-  .section3 button {
-    background-color: #8C30F5;
+}
+
+.section3 button {
+    background-color: #8c30f5;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -244,19 +243,19 @@ background-position: center;
     margin-right: 43px;
     width: 146px;
     height: 42px;
-  }
+}
 
-  button.disabled {
+button.disabled {
     /* opacity: 0.5; */
     cursor: not-allowed;
-    background-color: #D6B1FF;
+    background-color: #d6b1ff;
     border: none;
     border-radius: 5px;
     padding: 8px 16px;
     font-size: 18px;
     color: #fff;
-  }
-  
-  .section3 button:hover {
-    background-color: #8C30F5;
-  }
+}
+
+.section3 button:hover {
+    background-color: #8c30f5;
+}
