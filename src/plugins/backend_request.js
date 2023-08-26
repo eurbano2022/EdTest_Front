@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export class BackendRequest {
-    constructor(token, baseURL='https://www.edtest.co/api/v1') {
+    constructor(token, baseURL='localhost:8000') {
         this.__baseURL = baseURL
         this.__token = token
         this.__axios = axios
