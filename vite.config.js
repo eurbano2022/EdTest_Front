@@ -33,6 +33,6 @@ export default defineConfig({
     ],
   },
   server: {
-    port: 81,
+    port: 8081,
   },
 })
