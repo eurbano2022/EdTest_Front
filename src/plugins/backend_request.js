@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export class BackendRequest {
-    constructor(token, baseURL='http://172.31.32.126/api/v1') {
+    constructor(token, baseURL='http://localhost/api/v1') {
         this.__baseURL = baseURL
         this.__token = token
         this.__axios = axios
