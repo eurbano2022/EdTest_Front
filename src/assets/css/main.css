@@ -1,0 +1,31 @@
+html, body { overflow-y: auto }
+
+.color-btn-purple {
+    color: white !important;
+    background-color: #ab00f7ff;
+    text-transform: capitalize !important;
+}
+
+.mt-30 {
+    margin-top: 120px !important;
+}
+
+.mmw-75 {
+    max-width: 75%;
+    min-width: 75%;
+}
+
+.mmw-40 {
+    max-width: 40%;
+    min-width: 40%;
+}
+
+.mmw-20 {
+    max-width: 20%;
+    min-width: 20%;
+}
+
+.mmw-5 {
+    max-width: 5%;
+    min-width: 5%;
+}
