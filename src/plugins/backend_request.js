@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export class BackendRequest {
-    constructor(token, baseURL='localhost:8000') {
+    constructor(token, baseURL='localhost:82') {
         this.__baseURL = baseURL
         this.__token = token
         this.__axios = axios
@@ -15,7 +15,8 @@ export class BackendRequest {
         return {'Authorization': this.__token}
     }
 
-    get_industries() {
+  get_industries() {
+    console.log('****', this.__get_url('industries'));
         return axios({
             method: 'get',
             url: this.__get_url('industries'),
